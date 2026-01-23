@@ -1,4 +1,4 @@
-public class playlist {
+public class Playlist {
   String[] Song_Titles;
   String[] Artists;
   int[] Song_Lengths;
@@ -7,7 +7,7 @@ public class playlist {
   String name;
   int empty_index = 0;
 
-  public playlist(int size, String name) {
+  public Playlist(int size, String name) {
     Song_Titles = new String[size];
     Artists = new String[size];
     Song_Lengths = new int[size];
@@ -42,5 +42,9 @@ public class playlist {
     Song_Play_Counts[index] = plays;
 
     return true;
+  }
+
+  public String to_string() {
+    
   }
 }
