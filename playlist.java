@@ -73,4 +73,19 @@ public class Playlist {
   private String formatLength(int length) {
     return "" + (length / 60) + ":" + (length % 60);
   }
+
+  public void mostViewed() {
+        int max = 0;
+        int index = 0;
+        for (int i : playlist.Song_Lengths) {
+            if (i > max) { max = i; }
+            index += 1;
+        }
+
+
+    }
+
+    private String format(int index, String text) {
+        return Playlist.Song_Titles[i] + " by " Playlist.Artists[i] + "; " 
+    }
 }
