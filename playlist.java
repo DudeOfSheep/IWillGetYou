@@ -16,7 +16,7 @@ public class playlist {
     this.name = name;
   }
 
-  public boolean add_song(String title, String artist, int length, int plays) {
+  public boolean append(String title, String artist, int length, int plays) {
     if (empty_index >= size) {
       return false;
     }
@@ -27,6 +27,19 @@ public class playlist {
     Song_Play_Counts[empty_index] = plays;
 
     empty_index += 1;
+
+    return true;
+  }
+
+  public boolean set_index(String title, String artist, int length, int plays, int index) {
+    if (index >= size || index < 0) {
+      return false;
+    }
+
+    Song_Titles[index] = title;
+    Artists[index] = artist;
+    Song_Lengths[index] = length;
+    Song_Play_Counts[index] = plays;
 
     return true;
   }
