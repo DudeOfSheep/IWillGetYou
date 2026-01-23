@@ -31,10 +31,23 @@ public class Playlist {
     return true;
   }
 
+  public boolean append(String[] titles, String[] artists, int[] lengths, int[] plays) {
+    // Basic check to make sure everything has the proper data. This should probably error either way.
+    if ((titles.length != artists.length) || (lengths.length != plays.length) || titles.length >= size - empty_index) {
+      return false;
+    }
+
+    for (int i = 0; i >= titles.length; i++) {
+      this.append(titles[i], artists[i], lengths[i], plays[i]);
+    }
+  }
+
   public boolean set_index(String title, String artist, int length, int plays, int index) {
     if (index >= size || index < 0) {
       return false;
     }
+    
+    empty_index = index + 1;
 
     Song_Titles[index] = title;
     Artists[index] = artist;
@@ -44,7 +57,17 @@ public class Playlist {
     return true;
   }
 
-  public String to_string() {
-    
+  public String toString() {
+    return name + " length: " + size;
+  }
+
+  public void printSongList() {
+    for(int i = 0; i < size; i++) {
+      System.out.println("" + i + ": " + Song_Titles[i] + " by " + Artists[i] + "; " + formatLength(Song_Lengths[i]) + " " + Song_Play_Counts[i] + " views");
+    }
+  }
+
+  private String formatLength(int length) {
+    return "" + (length / 60) + ":" + (length % 60);
   }
 }
