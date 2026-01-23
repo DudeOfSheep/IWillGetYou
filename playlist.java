@@ -1,3 +1,4 @@
+
 public class Playlist {
   String[] Song_Titles;
   String[] Artists;
@@ -106,7 +107,34 @@ public class Playlist {
     System.out.println(format(min, "is the least played song"));
   }
 
+  
+  public String selectArtists(PlaylistSearch<String> searcher) {
+    // Two methods, save by index or save by individual data.
+    String res = "";
+    int index;
+
+    for (String artist : Artists) {
+      res = searcher.compare(artist, res);
+    }
+
+    return res;
+  }
+
+  public int selectLength(PlaylistSearch<Integer> f) {
+    int res = Song_Lengths[0];
+
+    for (int length : Song_Lengths) {
+      res = f.compare(length, res);
+    }
+
+    return res;
+  }
+
   private String format(int index, String text) {
       return Song_Titles[index] + " by " + Artists[index] + "; " + formatLength(Song_Lengths[index]) + " with " + Song_Play_Counts[index] + " plays " + text;
+  }
+
+  public interface PlaylistSearch<T> {
+    T compare(T a, T b);
   }
 }
