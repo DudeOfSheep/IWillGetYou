@@ -44,13 +44,14 @@ public class Playlist {
     return true;
   }
 
-  public boolean set_index(String title, String artist, int length, int plays, int index) {
+  public boolean set_index(int index, String title, String artist, int length, int plays) {
     if (index >= size || index < 0) {
       return false;
     }
+    if (index + 1 > empty_index) {
+      empty_index = index + 1;
+    }
     
-    empty_index = index + 1;
-
     Song_Titles[index] = title;
     Artists[index] = artist;
     Song_Lengths[index] = length;
@@ -64,7 +65,7 @@ public class Playlist {
   }
 
   public void printSongList() {
-    for(int i = 0; i < size; i++) {
+    for(int i = 0; i < empty_index; i++) {
       System.out.println("" + i + ": " + Song_Titles[i] + " by " + Artists[i] + "; " + formatLength(Song_Lengths[i]) + " " + Song_Play_Counts[i] + " views");
     }
   }

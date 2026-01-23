@@ -7,5 +7,9 @@ public class manager {
     Teto.append("Bird Brain", "Jamie Page", 256, 8156);
 
     Teto.printSongList();
+
+    Teto.set_index(0, "Bird Brain", "Jamie Page", 256, 8156);
+
+    Teto.printSongList();
   }
 }
