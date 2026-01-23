@@ -76,13 +76,16 @@ public class Playlist {
 
   public void mostViewed() {
         int max = 0;
-        int index = 0;
+        int index = -2;
         for (int i : Song_Lengths) {
+          if ((Integer) i == null) {
+            continue;
+          }
             if (i > max) { max = i; }
             index += 1;
         }
 
-        // print out the most viewed song
+        System.out.println(format(index, "is the most viewed song"));
     }
 
     private String format(int index, String text) {
