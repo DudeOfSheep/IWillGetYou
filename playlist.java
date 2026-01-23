@@ -77,15 +77,15 @@ public class Playlist {
   public void mostViewed() {
         int max = 0;
         int index = 0;
-        for (int i : playlist.Song_Lengths) {
+        for (int i : Song_Lengths) {
             if (i > max) { max = i; }
             index += 1;
         }
 
-
+        // print out the most viewed song
     }
 
     private String format(int index, String text) {
-        return Playlist.Song_Titles[i] + " by " Playlist.Artists[i] + "; " 
+        return Song_Titles[index] + " by " + Artists[index] + "; " + formatLength(Song_Lengths[index]) + " " + Song_Play_Counts + " views " + text;
     }
 }
