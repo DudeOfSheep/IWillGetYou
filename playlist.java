@@ -66,7 +66,7 @@ public class Playlist {
 
   public void printSongList() {
     for(int i = 0; i < empty_index; i++) {
-      System.out.println("" + i + ": " + Song_Titles[i] + " by " + Artists[i] + "; " + formatLength(Song_Lengths[i]) + " " + Song_Play_Counts[i] + " views");
+      System.out.println("" + i + ": " + Song_Titles[i] + " by " + Artists[i] + "; " + formatLength(Song_Lengths[i]) + " " + Song_Play_Counts[i] + " plays");
     }
   }
 
@@ -75,20 +75,38 @@ public class Playlist {
   }
 
   public void mostViewed() {
-        int max = 0;
-        int index = -2;
-        for (int i : Song_Lengths) {
-          if ((Integer) i == null) {
-            continue;
-          }
-            if (i > max) { max = i; }
-            index += 1;
-        }
+    int max = Integer.MIN_VALUE;
+    int index = -2;
 
-        System.out.println(format(index, "is the most viewed song"));
+    for (int i : Song_Lengths) {
+      if ((Integer) i == null) {
+        // Continue instead of breaking, as some indicies might have been manually set.
+        continue;
+      }
+        if (i > max) { max = index; }
+        index += 1;
     }
 
-    private String format(int index, String text) {
-        return Song_Titles[index] + " by " + Artists[index] + "; " + formatLength(Song_Lengths[index]) + " " + Song_Play_Counts + " views " + text;
+    System.out.println(format(max, "is the most played song"));
+  }
+
+  public void leastViewed() {
+    int min = Integer.MAX_VALUE;
+    int index = -2;
+    
+    for (int i : Song_Lengths) {
+      if ((Integer) i == null) {
+        // Continue instead of breaking, as some indicies might have been manually set.
+        continue;
+      }
+        if (i < min) { min = index; }
+        index += 1;
     }
+
+    System.out.println(format(max, "is the least played song"));
+  }
+
+  private String format(int index, String text) {
+      return Song_Titles[index] + " by " + Artists[index] + "; " + formatLength(Song_Lengths[index]) + " with " + Song_Play_Counts[index] + " plays " + text;
+  }
 }
