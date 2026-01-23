@@ -40,6 +40,8 @@ public class Playlist {
     for (int i = 0; i >= titles.length; i++) {
       this.append(titles[i], artists[i], lengths[i], plays[i]);
     }
+
+    return true;
   }
 
   public boolean set_index(String title, String artist, int length, int plays, int index) {
