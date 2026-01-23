@@ -93,7 +93,7 @@ public class Playlist {
   public void leastViewed() {
     int min = Integer.MAX_VALUE;
     int index = -2;
-    
+
     for (int i : Song_Lengths) {
       if ((Integer) i == null) {
         // Continue instead of breaking, as some indicies might have been manually set.
@@ -103,7 +103,7 @@ public class Playlist {
         index += 1;
     }
 
-    System.out.println(format(max, "is the least played song"));
+    System.out.println(format(min, "is the least played song"));
   }
 
   private String format(int index, String text) {
