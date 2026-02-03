@@ -79,7 +79,7 @@ public class Playlist {
     int max = Integer.MIN_VALUE;
     int index = -2;
 
-    for (int i : Song_Lengths) {
+    for (int i : Song_Play_Counts) {
       if ((Integer) i == null) {
         // Continue instead of breaking, as some indicies might have been manually set.
         continue;
@@ -95,7 +95,7 @@ public class Playlist {
     int min = Integer.MAX_VALUE;
     int index = -2;
 
-    for (int i : Song_Lengths) {
+    for (int i : Song_Play_Counts) {
       if ((Integer) i == null) {
         // Continue instead of breaking, as some indicies might have been manually set.
         continue;
@@ -107,8 +107,96 @@ public class Playlist {
     System.out.println(format(min, "is the least played song"));
   }
 
+  public void longestLength() {
+    int max = Integer.MIN_VALUE;
+    int index = -2;
+
+    for (int i : Song_Lengths) {
+      if ((Integer) i == null) {
+        // Continue instead of breaking, as some indicies might have been manually set.
+        continue;
+      }
+        if (i > max) { max = index; }
+        index += 1;
+    }
+
+    System.out.println(format(max, "is the longest song"));
+  }
+
+  public void shortestLength() {
+    int min = Integer.MAX_VALUE;
+    int index = -2;
+
+    for (int i : Song_Lengths) {
+      if ((Integer) i == null) {
+        // Continue instead of breaking, as some indicies might have been manually set.
+        continue;
+      }
+        if (i < min) { min = index; }
+        index += 1;
+    }
+
+    System.out.println(format(min, "is the shortest song"));
+  }
+
+  public int getTotalLength() {
+    int res = 0;
+
+    for (int i : Song_Lengths) {
+      if ((Integer i) i == null) {
+        continue;
+      }
+      res += i;
+    }
+
+    return res;
+  }
+
+  public int countByLength(int length) {
+    int res = 0;
+
+    for (int i : Song_Lengths) {
+      if ((Integer) i == null) {
+        continue;
+      }
+
+      if (i >= length) {
+        res += 1;
+      }
+    }
+
+    return res;
+  }
+
+  public void reccomendSong() {
+    int max = Integer.MIN_VALUE;
+    int index = -2;
+
+    for (int i : Song_Play_Counts) {
+      if ((Integer) i == null) {
+        // Continue instead of breaking, as some indicies might have been manually set.
+        continue;
+      }
+        if (i > max) { max = index; }
+        index += 1;
+    }
+
+    System.out.println(format(max, " reccomended"));
+  }
+
+  public void getSong(String name) {
+    for (int i = 0; i <= Song_Titles.length; i++) {
+      if (Song_Titles[i] == null) {
+        continue;
+      }
+      if (Song_Titles[i].equals(name)) {
+        System.out.println(format(i, "")); 
+      }
+    }
+  }
+
   
-  public String selectArtists(PlaylistSearch<String> searcher) {
+  public String selectArtists(PlaylistSearch<String> searcher, String target) {
     // Two methods, save by index or save by individual data.
     String res = "";
     int index;
@@ -120,11 +208,11 @@ public class Playlist {
     return res;
   }
 
-  public int selectLength(PlaylistSearch<Integer> f) {
+  public int selectLength(PlaylistSearch<Integer> searcher) {
     int res = Song_Lengths[0];
 
     for (int length : Song_Lengths) {
-      res = f.compare(length, res);
+      res = searcher.compare(length, res);
     }
 
     return res;
