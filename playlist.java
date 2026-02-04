@@ -143,7 +143,7 @@ public class Playlist {
     int res = 0;
 
     for (int i : Song_Lengths) {
-      if ((Integer i) i == null) {
+      if ((Integer) i == null) {
         continue;
       }
       res += i;

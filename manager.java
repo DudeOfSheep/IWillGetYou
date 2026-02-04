@@ -12,5 +12,11 @@ public class manager {
 
     Teto.printSongList();
     Teto.mostViewed();
+    Teto.leastViewed();
+    Teto.longestLength();
+    Teto.shortestLength();
+    System.out.println(Teto.getTotalLength());
+    System.out.println("Songs greater than 2:50: " + Teto.countByLength(230));
+    Teto.reccomendSong();
   }
 }
